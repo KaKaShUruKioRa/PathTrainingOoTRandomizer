@@ -120,7 +120,7 @@ namespace PathTrainingOoTRandomizer.Helpers
 
                     Console.WriteLine("Terminée..." + "\n");
 
-                    Console.WriteLine(objectToImport);
+                    //Console.WriteLine(objectToImport);
 
                     return objectToImport;
                 }
@@ -141,7 +141,7 @@ namespace PathTrainingOoTRandomizer.Helpers
 
                     Console.WriteLine("Terminée..." + "\n");
 
-                    Console.WriteLine(objectToImport);
+                    //Console.WriteLine(objectToImport);
 
                     return objectToImport;
                 }

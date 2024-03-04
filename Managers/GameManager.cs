@@ -1,7 +1,5 @@
 ﻿
-
 using PathTrainingOoTRandomizer.Models;
-using System.Runtime.Serialization;
 
 namespace PathTrainingOoTRandomizer.Managers
 {

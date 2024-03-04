@@ -116,10 +116,10 @@ namespace PathTrainingOoTRandomizer.Models
         {
             string contenusDeLObjet = "\n -- " + this.GetType() + " -- \n";
 
-            contenusDeLObjet += 
-                "    Name : " + this.Name + 
-                "    Description : " + this.Description + 
-                "    Requierement : " + this.Requierement + 
+            contenusDeLObjet +=
+                "    Name : " + this.Name +
+                "    Description : " + this.Description +
+                "    Requierement : " + this.Requierement +
                 "\n    -> Checks :        ";
             if (this.Checks != null)
             {
@@ -159,7 +159,7 @@ namespace PathTrainingOoTRandomizer.Models
             contenusDeLObjet += "\n    -> Golden Skulltulas : :        ";
             if (this.GoldenSkulltulas is not null)
             {
-                foreach (var element in this.GoldenSkulltulas) 
+                foreach (var element in this.GoldenSkulltulas)
                 {
                     contenusDeLObjet += element;
                 }

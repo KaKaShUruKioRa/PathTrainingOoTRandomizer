@@ -1,5 +1,8 @@
-﻿using PathTrainingOoTRandomizer.Helpers;
+﻿using PathTrainingOoTRandomizer.Builders;
+using PathTrainingOoTRandomizer.Helpers;
+using PathTrainingOoTRandomizer.Models;
 using PathTrainingOoTRandomizer.Tests;
+using System.Xml.Linq;
 
 namespace KaKaShUruKioRa
 {
@@ -52,13 +55,47 @@ namespace KaKaShUruKioRa
             }
 
             // Chemin relatif vers le fichier JSON
-            string cheminFichierJson = "Ressources/Json/Untitled-1.json";
+            string cheminFichierJson = "Ressources/Json/Untitled-2.json";
+            string relativPath = "outRessources/Json/Untitled-2.json";
 
-            var ha = new GameConfiguration();
-            JsonHelper.Import<GameConfiguration>(cheminFichierJson, ha);
+            var gameConfiguration = JsonHelper.Import<GameConfiguration>(cheminFichierJson, new GameConfiguration());
+
+            var builderForGossipStone = new GossipStoneBuilder();
+            var directorForGossipStone = new Director();
+            directorForGossipStone.Builder = builderForGossipStone;
+            
+            /*
+            directorForGossipStone.BuildGossipStone(gameConfiguration.gossip_stones);
+            GossipStone gsTest = builderForGossipStone.GetGossipStone();
+            */
+
+            directorForGossipStone.BuildGossipStonesList(gameConfiguration.gossip_stones);
 
 
-            // var gameManger = new GameManager();}
+            var gossipStonesList = builderForGossipStone.GetGossipStonesList();
+
+            foreach (var elementList in gossipStonesList)
+            {
+                Console.WriteLine(elementList);
+            }
+
+
+            /*
+            foreach (var element in gameConfiguration.gossip_stones)
+            {
+                directorForGossipStone.BuildGossipStone(element., Colors, HintedLocations, HintedItems, requierement);
+            }
+            */
+
+                /*           
+                var gameConfig = new GameConfiguration();
+                gameConfig.settings.Add("user_message", "OoTr League S5");
+                gameConfig.settings.Add("reachable_locations", "beatable League S5");
+
+                JsonHelper.ExportObject(relativPath, gameConfig);
+                */
+
+                //var gameManger = new GameManager();
 
             return 0;
         }
