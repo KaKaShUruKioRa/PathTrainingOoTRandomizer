@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "coZOvjyNIoYWhcMJZCo0OQVEt3dC79beoQEP+dQHXZFNxx2LwUwEVWgtiuhWihzTuRao7YuQWNcbbABUOHeSWw==",
+  "dgSpecHash": "gk0AaBtuCyzZDV++0/7tIasdhoN/GIXis/5MvCYgxkJPC8e5ct0ZUVUh+UQa2O8WbPifRY7zduMxFPomMT3iZg==",
   "success": true,
   "projectFilePath": "E:\\Users\\KaKaShUruk\\Documents\\Dev\\Projet C#\\PathTrainingOoTRandomizer\\PathTrainingOoTRandomizer.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\KaKaShUruKioRa\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512"
+  ],
   "logs": []
 }

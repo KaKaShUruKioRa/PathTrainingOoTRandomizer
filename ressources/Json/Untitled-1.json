@@ -1,0 +1,38 @@
+{
+  ":version":                  "8.0.0 Release",
+  "file_hash":                 ["Cucco", "Mirror Shield", "Gold Scale", "Silver Gauntlets", "Mushroom"],
+  ":seed":                     "1YV2N2NG9K",
+  ":settings_string":          "BSS4BGBSWJAA32CBAESNMEASJCCACACTEACAASAASAAAAASAACBAAESB2AP2DACAXKQLX8HAGSTELDMASAAA3CGZAG2VCDABJU9AS2SQ2ESAAKJSK7CA",
+  ":enable_distribution_file": false,
+  "settings": {  "parametres": "differentparametre" },
+  "randomized_settings": { "starting_age": "adult" },
+  "item_pool": { "Objet": "Quantité" },
+  "dungeons": { "Donjon": "vanilla"  },
+  "empty_dungeons": { "RegionDonjon": false },
+  "trials": { "trial": "inactive"},
+  "songs": { "Chants": "Notes" },
+  "entrances": { 
+    "LieudeSpawn": {"region": "region", "from": "from"}
+},
+  "locations": { "ListeRegionCheck": "ObjetsMajeurs" },
+  ":skipped_locations": { "ZoneSkipped": "ObjetsMajeurs" },
+  ":woth_locations": { "OBjetsMajeurVoieDuHero": "ObjetsMajeurs"},
+  ":goal_locations": {
+    "rainbow_bridge": {
+      "Path to Bongo Bongo": { "CheckObjetMajeur": "ObjetsMajeurs" },
+      "Path to Queen Gohma": { "CheckObjetMajeur": "ObjetsMajeurs" },
+      "Path to Phantom Ganon": { "CheckObjetMajeur": "ObjetsMajeurs" },
+      "Path to Barinade": { "CheckObjetMajeur": "ObjetsMajeurs" },
+      "Path to King Dodongo": { "CheckObjetMajeur": "ObjetsMajeurs" },
+      "Path to Morpha": { "CheckObjetsMajeurs": "ObjetsMajeurs" }
+    }
+  },
+  ":barren_regions": [ "RegionsSansObjetsMajeurs" ],
+  "gossip_stones": {
+    "LieuIndice": {"text": "Indice", "colors": ["color"], "hinted_locations": ["DMT Biggoron"], "hinted_items": ["Piece of Heart"]}
+  },
+  ":playthrough": {
+    "0":  {"RouteOptimap pourfinir" :"ObjetsMajeurs"},
+    "16": {"BossSphereFinal": "ObjetsMajeurs"}
+  }
+}
