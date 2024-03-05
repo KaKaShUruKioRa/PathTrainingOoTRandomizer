@@ -39,7 +39,6 @@ namespace PathTrainingOoTRandomizer.Managers
             {
                 operation++;
 
-
                 if (operation % (3600*120) == 0)
                 {
                     frame++;

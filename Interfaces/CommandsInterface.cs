@@ -1,4 +1,4 @@
-namespace PathTrainingOoTRandomizer.Commands
+﻿namespace PathTrainingOoTRandomizer.Interfaces
 {
     public interface ICommand
     {
@@ -7,3 +7,4 @@ namespace PathTrainingOoTRandomizer.Commands
         void Execute(string[] args);
     }
 }
+

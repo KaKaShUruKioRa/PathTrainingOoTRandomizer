@@ -17,7 +17,7 @@ namespace PathTrainingOoTRandomizer.Component
 
                 for (int i = numberOfChecks; i > 0; i--)
                 {
-                    var tempCheck = new Check("name", "description", "token");
+                    var tempCheck = new Check("name", "description", new Item());
                     this.Checks.Add(tempCheck);
                 }
             }

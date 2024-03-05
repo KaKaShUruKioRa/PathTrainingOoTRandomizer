@@ -11,7 +11,7 @@ namespace PathTrainingOoTRandomizer.Factories
             var builder = new RegionBuilder("Desert","hahah","bebe");
 
             builder.AddCheck("Temple Entrance",
-                new Check( "Light up 2 torches", "Magic", "Magie" ));
+                new Check("Light up 2 torches", "Magic", new Item()));
 
             List<string> colors = new List<string>();
             List<string> hintedLocations = new List<string>();

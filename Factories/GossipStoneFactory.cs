@@ -1,15 +1,10 @@
-﻿using PathTrainingOoTRandomizer.Builders;
-using PathTrainingOoTRandomizer.Helpers;
+﻿using PathTrainingOoTRandomizer.Interfaces;
 using PathTrainingOoTRandomizer.Models;
 
 namespace PathTrainingOoTRandomizer.Factories
 {
     public class GossipStoneFactory
     {
-    }
-    public interface IProduct
-    {
-        GossipStone Operation();
     }
 
     abstract class Creator

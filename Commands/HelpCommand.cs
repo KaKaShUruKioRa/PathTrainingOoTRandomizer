@@ -1,3 +1,5 @@
+using PathTrainingOoTRandomizer.Interfaces;
+
 namespace PathTrainingOoTRandomizer.Commands
 {
     public class HelpCommand : ICommand

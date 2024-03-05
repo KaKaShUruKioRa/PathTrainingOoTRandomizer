@@ -3,7 +3,8 @@ namespace PathTrainingOoTRandomizer.Models
     // Classe représentant un Check qui possède un Objet
     public class Check
     {
-        public Check(string name, string description, string item)
+        public Check() { }
+        public Check(string name, string description, Item item)
         {
             Name = name;
             Description = description;
@@ -12,8 +13,11 @@ namespace PathTrainingOoTRandomizer.Models
 
         public string Name { get; set; }
         public string Description { get; set; }
-        public string Item { get; set; }
-        // Autres attributs selon tes besoins
+        public Item Item { get; set; }
+        public short? price;
+        public string Requierement; // Peut-être Object avec Comparaison ??
+
+        //public Component<Price> price;
 
         public override string ToString()
         {
@@ -21,7 +25,7 @@ namespace PathTrainingOoTRandomizer.Models
 
             contenusDeLObjet +=
             "     Name : " + this.Name +
-            "     Desciption : " + this.Description +
+            "     Description : " + this.Description +
             "     Item : " + this.Item;
 
             /*

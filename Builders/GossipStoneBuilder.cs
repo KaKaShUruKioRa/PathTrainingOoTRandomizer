@@ -1,23 +1,10 @@
-﻿using PathTrainingOoTRandomizer.Helpers;
+﻿using PathTrainingOoTRandomizer.Interfaces;
 using PathTrainingOoTRandomizer.Models;
-using System.Xml.Linq;
 
 namespace PathTrainingOoTRandomizer.Builders
 {
-    public interface IBuilder
-    {
-        void BuildName(string name);
-        void BuildText(string text);
-        void BuildColors(List<string> Colors);
-        void BuildHintedLocations(List<string> HintedLocations);
-        void BuildHintedItems(List<string> HintedItem);
-        void BuildRequierement(string requierement);
-
-        void AddGossipToList();
-    }
-
     // Builder pour construire des régions
-    public class GossipStoneBuilder : IBuilder
+    public class GossipStoneBuilder : IGossipStoneBuilder
     {
         private GossipStone GossipStone = new GossipStone();
         private List<GossipStone> GossipStonesList = new List<GossipStone>();
@@ -54,11 +41,15 @@ namespace PathTrainingOoTRandomizer.Builders
         {
             this.GossipStone.Requierement = Requierement;
         }
-        public void AddGossipToList()
+        public void AddGossipStoneToList()
         {
             this.GossipStonesList.Add(this.GossipStone);
+            Reset();
         }
 
+        // ======================================================================
+        // -> Méthode d'Interface pour IBuilder ??? Generic ???
+        // ======================================================================
         public GossipStone GetGossipStone()
         {
             return this.GossipStone;
@@ -68,11 +59,40 @@ namespace PathTrainingOoTRandomizer.Builders
         {
             return this.GossipStonesList;
         }
-    }
 
+        // ======================================================================
+        // -> Méthode d'Interface pour IBuilder ??? Generic ???
+        // ======================================================================
+        public void AddObjectToList()
+        {
+            this.GossipStonesList.Add(this.GossipStone);
+        }
+
+        public object GetObject()
+        {
+            return this.GossipStone;
+        }
+
+        public List<object> GetObjectsList()
+        {
+            List<object> ObjectsList = new List<object>();
+
+            if (this.GossipStonesList.Count > 0)
+            {
+
+                foreach (var element in this.GossipStonesList)
+                {
+                    ObjectsList.Add((GossipStone)element);
+                }
+            }
+
+            return ObjectsList;
+        }
+    }
+    /*
     public class Director
     {
-        public IBuilder Builder { set; get; }
+        public IGossipStoneBuilder Builder { set; get; }
 
         public void BuildGossipStone(string name, string text, List<string> Colors, List<string> HintedLocations, List<string> HintedItems, string requierement)
         {
@@ -85,7 +105,7 @@ namespace PathTrainingOoTRandomizer.Builders
         }
         public void BuildGossipStone(Dictionary<string, Dictionary<string, dynamic>> GossipStoneConfiguration)
         {
-            if (GossipStoneConfiguration.Count() > 0)
+            if (GossipStoneConfiguration.Count > 0)
             {
                 //Name = la Key du PREMIER DIC
                 this.Builder.BuildName(GossipStoneConfiguration.First().Key);
@@ -140,7 +160,7 @@ namespace PathTrainingOoTRandomizer.Builders
 
         public void BuildGossipStonesList(Dictionary<string, Dictionary<string, dynamic>> GossipStoneConfiguration)
         {
-            if (GossipStoneConfiguration.Count() > 0)
+            if (GossipStoneConfiguration.Count > 0)
             {
                 foreach (var element in GossipStoneConfiguration)
                 {
@@ -188,9 +208,10 @@ namespace PathTrainingOoTRandomizer.Builders
                             this.Builder.BuildHintedItems(hintedItemsList);
                         }
                     }
-                    this.Builder.AddGossipToList();
+                    this.Builder.IGossipStoneToList();
                 }
             }
         }
     }
+    */
 }

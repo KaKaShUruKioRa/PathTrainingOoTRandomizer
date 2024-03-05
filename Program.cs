@@ -1,5 +1,6 @@
 ﻿using PathTrainingOoTRandomizer.Builders;
 using PathTrainingOoTRandomizer.Helpers;
+using PathTrainingOoTRandomizer.Managers;
 using PathTrainingOoTRandomizer.Models;
 using PathTrainingOoTRandomizer.Tests;
 using System.Xml.Linq;
@@ -54,27 +55,54 @@ namespace KaKaShUruKioRa
                 }
             }
 
+            TestBuilder();
+
+            /*           
+            var gameConfig = new GameConfiguration();
+            gameConfig.settings.Add("user_message", "OoTr League S5");
+            gameConfig.settings.Add("reachable_locations", "beatable League S5");
+
+            JsonHelper.ExportObject(relativPath, gameConfig);
+            */
+
+            var gameManger = new GameManager();
+
+            return 0;
+        }
+        public static void TestBuilder()
+        {
             // Chemin relatif vers le fichier JSON
             string cheminFichierJson = "Ressources/Json/Untitled-2.json";
-            string relativPath = "outRessources/Json/Untitled-2.json";
 
             var gameConfiguration = JsonHelper.Import<GameConfiguration>(cheminFichierJson, new GameConfiguration());
 
             var builderForGossipStone = new GossipStoneBuilder();
-            var directorForGossipStone = new Director();
-            directorForGossipStone.Builder = builderForGossipStone;
-            
-            /*
-            directorForGossipStone.BuildGossipStone(gameConfiguration.gossip_stones);
-            GossipStone gsTest = builderForGossipStone.GetGossipStone();
-            */
+            var builderForItem = new ItemBuilder();
+            var builderForCheck = new CheckBuilder();
+            var directorOfBUilder = new Director();
 
-            directorForGossipStone.BuildGossipStonesList(gameConfiguration.gossip_stones);
+            directorOfBUilder.Builder = builderForGossipStone;
+            directorOfBUilder.BuildGossipStonesList(gameConfiguration.gossip_stones);
 
+            directorOfBUilder.Builder = builderForItem;
+            directorOfBUilder.BuildItemsList(gameConfiguration.item_pool);
+
+            directorOfBUilder.Builder = builderForCheck;
+            directorOfBUilder.BuildChecksList(gameConfiguration.locations);
 
             var gossipStonesList = builderForGossipStone.GetGossipStonesList();
+            var itemsList = builderForItem.GetItemsList();
+            var checksList = builderForCheck.GetChecksList();
 
             foreach (var elementList in gossipStonesList)
+            {
+                Console.WriteLine(elementList);
+            }
+            foreach (var elementList in itemsList)
+            {
+                Console.WriteLine(elementList);
+            }
+            foreach (var elementList in checksList)
             {
                 Console.WriteLine(elementList);
             }
@@ -86,98 +114,6 @@ namespace KaKaShUruKioRa
                 directorForGossipStone.BuildGossipStone(element., Colors, HintedLocations, HintedItems, requierement);
             }
             */
-
-                /*           
-                var gameConfig = new GameConfiguration();
-                gameConfig.settings.Add("user_message", "OoTr League S5");
-                gameConfig.settings.Add("reachable_locations", "beatable League S5");
-
-                JsonHelper.ExportObject(relativPath, gameConfig);
-                */
-
-                //var gameManger = new GameManager();
-
-            return 0;
         }
     }
 }
-
-/*
-
-        // Créer une région de désert en utilisant la factory
-        Region desertRegion = RegionFactory.CreateDesertRegion();
-
-        // Afficher les noms des lieux de la région de désert
-        Console.WriteLine($"Lieux de la région de désert '{desertRegion.Name}':");
-        foreach (var location in desertRegion.Locations)
-        {
-            Console.WriteLine(location.Name);
-        }
-
-        // Méthode pour charger les données à partir du fichier JSON
-        static Region[] LoadRegions(string filePath)
-        {
-            string json = File.ReadAllText(filePath);
-            return JsonConvert.DeserializeObject<Region[]>(json);
-        }
-
-        // Méthode pour afficher les informations sur une région
-        static void DisplayRegionInfo(Region region)
-        {
-            Console.WriteLine($"Nom : {region.Name}");
-            Console.WriteLine($"Description : {region.Description}");
-            // Affiche d'autres propriétés selon la structure de ta classe Region
-        }
-
-        // Chemin vers le fichier JSON contenant les données des régions
-        string jsonFilePath = "regions.json";
-
-        // Charge les régions à partir du fichier JSON
-        Region[] regions = LoadRegions("jsontoread/test.json");
-
-        // Affiche un message d'accueil
-        Console.WriteLine("Bienvenue dans le jeu inspiré de Ocarina of Time Randomizer !");
-
-        // Boucle principale du jeu
-        while (true)
-        {
-            // Affiche les options disponibles pour l'utilisateur
-            Console.WriteLine("\nQue voulez-vous faire ?");
-            Console.WriteLine("1. Afficher les informations sur une région");
-            Console.WriteLine("2. Quitter");
-
-            // Lit le choix de l'utilisateur
-            string choice = Console.ReadLine();
-
-            // Traite le choix de l'utilisateur
-            switch (choice)
-            {
-                case "1":
-                    // Affiche les informations sur une région
-                    Console.WriteLine("Entrez le nom de la région :");
-                    string regionName = Console.ReadLine();
-                    Region selectedRegion = Array.Find(regions, r => r.Name.Equals(regionName, StringComparison.OrdinalIgnoreCase));
-                    if (selectedRegion != null)
-                    {
-                        DisplayRegionInfo(selectedRegion);
-                    }
-                    else
-                    {
-                        Console.WriteLine("Région non trouvée !");
-                    }
-                    break;
-                case "2":
-                    // Quitte le jeu
-                    Console.WriteLine("Merci d'avoir joué !");
-                    return;
-                default:
-                    Console.WriteLine("Choix invalide !");
-                    break;
-            }
-        }
-<<<<<<< HEAD
-        */
-=======
-    }
-}
->>>>>>> 51f161f (Organisation des Dossiers et Fichiers + Début de Code pour Lire/Ecrire des Fichiers .json)

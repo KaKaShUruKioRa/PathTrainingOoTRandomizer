@@ -41,6 +41,9 @@ namespace PathTrainingOoTRandomizer.Models
         }
         */
 
+        // ==================================================================
+        // Surcharge Opérateur ToString();
+        // ==================================================================
         /// <summary>
         /// 
         /// </summary>
@@ -49,10 +52,10 @@ namespace PathTrainingOoTRandomizer.Models
         {
             string contenusDeLObjet = "\n -- " + this.GetType() + " -- \n";
 
-            contenusDeLObjet += 
+            contenusDeLObjet +=
                 "    Text : " + this.Text;
             contenusDeLObjet += "\n    -> Colors :        ";
-            if (this.Colors.Count !=0)
+            if (this.Colors.Count != 0)
             {
                 foreach (var element in this.Colors)
                 {
